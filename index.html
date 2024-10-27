@@ -64,17 +64,17 @@
         survey.onComplete.add(function (sender) {
     const surveyData = sender.data;
 
-    fetch('https://script.google.com/macros/s/AKfycbyX9A9flmseDEH6oqdlcTqKGtCdNQOei80PlU2zkcDpADf2ubzDLY7lzxsIflLVNGA/exec', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(surveyData)
-    })
-    .then(response => response.text())
-    .then(data => console.log("Response from Google Apps Script:", data))
-    .catch(error => console.error("Error:", error));
-});
+            fetch('https://script.google.com/macros/s/AKfycbz8BhIHMcr_PYLnAPAlegmReshLIM30NsaP0Z8nQYxxDcA-lAwhccogkLKDXC_5VpX3ng/exec', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(surveyData)
+            })
+            .then(response => response.text())
+            .then(data => console.log("Response from Google Apps Script:", data))
+            .catch(error => console.error("Error:", error));
+        });
 
 
         // Render the Survey in the HTML container
