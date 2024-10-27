@@ -62,20 +62,19 @@
 
         // Event handler on survey completion
         survey.onComplete.add(function (sender) {
-    const surveyData = sender.data;
+            const surveyData = sender.data;
 
             fetch('https://script.google.com/macros/s/AKfycbz8BhIHMcr_PYLnAPAlegmReshLIM30NsaP0Z8nQYxxDcA-lAwhccogkLKDXC_5VpX3ng/exec', {
                 method: 'POST',
+                mode: 'no-cors',  // Enable no-cors mode
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'text/plain'  // Use text/plain as content type
                 },
                 body: JSON.stringify(surveyData)
             })
-            .then(response => response.text())
-            .then(data => console.log("Response from Google Apps Script:", data))
+            .then(() => console.log("Survey data sent successfully"))
             .catch(error => console.error("Error:", error));
         });
-
 
         // Render the Survey in the HTML container
         $(document).ready(function() {
