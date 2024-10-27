@@ -13,29 +13,50 @@
     <link href="https://unpkg.com/survey-core/defaultV2.min.css" rel="stylesheet">
 
     <style>
-        /* Ensures that the survey container expands fully in mobile view */
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow-x: hidden;
-        }
+    /* Ensure the page and survey container occupy full view width and height, prevent horizontal overflow */
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
+    #surveyContainer {
+        width: 100%;
+        max-width: 100%;
+        height: auto; /* Allow flexible height to fit content */
+        margin: 20px 0;
+        box-sizing: border-box;
+        padding: 15px; /* Increased padding for improved readability */
+        background-color: #f7f7f7; /* Optional: add a subtle background color */
+        border-radius: 8px; /* Optional: rounded corners for modern look */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+    }
+
+    /* Make SurveyJS content responsive and well-aligned on all devices */
+    .sv_main {
+        width: 100% !important;
+        max-width: 800px; /* Optional: limit width on large screens */
+        margin: auto;
+    }
+
+    /* Mobile adjustments for better readability on smaller screens */
+    @media (max-width: 768px) {
         #surveyContainer {
-            width: 100%;
-            max-width: 100%;
-            height: 100%;
-            margin: 20px 0;
-            box-sizing: border-box;
-            padding: 10px; /* Add some padding for readability */
+            padding: 10px;
+            margin: 10px 0;
         }
 
-        /* Ensure SurveyJS styles are responsive on smaller screens */
         .sv_main {
-            width: 100% !important;
+            padding: 0;
         }
-    </style>
+    }
+</style>
+
 </head>
 <body>
     <div id="surveyContainer"></div>
