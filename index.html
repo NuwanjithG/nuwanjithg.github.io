@@ -70,15 +70,17 @@
         survey.onComplete.add(function (sender) {
             const surveyData = sender.data;
 
-            fetch('https://script.google.com/macros/s/AKfycbxpL3AP32vG5UDlgpQI-TGZ5JGKydsgSAh-xg9v6Tyvyd4XPJv9NkjjlHL92Tiki8fYsw/exec', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(surveyData)
-            })
-            .then(() => console.log("Survey data sent successfully"))
-            .catch(error => console.error("Error:", error));
+            fetch('https://script.google.com/macros/s/AKfycbyUysRGJLI4L8wCYseDXTc0i8Ul0v_wNCFo2-3H_2KYsZtQywvgema31JtOylsRjfKv_w/exec', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    mode: 'cors',
+    body: JSON.stringify(surveyData)
+})
+    .then(() => console.log("Survey data sent successfully"))
+    .catch(error => console.error("Error:", error));
+
         });
 
         // Render the Survey in the HTML container
