@@ -64,14 +64,13 @@
         survey.onComplete.add(function (sender) {
             const surveyData = sender.data;
 
-            fetch('https://script.google.com/macros/s/AKfycbz8BhIHMcr_PYLnAPAlegmReshLIM30NsaP0Z8nQYxxDcA-lAwhccogkLKDXC_5VpX3ng/exec', {
-                method: 'POST',
-                mode: 'no-cors',  // Enable no-cors mode
-                headers: {
-                    'Content-Type': 'text/plain'  // Use text/plain as content type
-                },
-                body: JSON.stringify(surveyData)
-            })
+            fetch('https://script.google.com/macros/s/AKfycbyq-nDoPyF6av3B2itO0RE4YNwHoe5fllefAl4KPALx5V7OmUAwOkp4VRVGGXfDGa88wA/exec', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'  // This will be allowed now
+            },
+            body: JSON.stringify(surveyData)
+        })
             .then(() => console.log("Survey data sent successfully"))
             .catch(error => console.error("Error:", error));
         });
