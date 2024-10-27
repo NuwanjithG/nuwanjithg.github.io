@@ -2,17 +2,38 @@
 <html lang="en">
 <head>
     <title>Survey Embed</title>
+    <!-- Set the viewport for responsive design on mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <!-- Load jQuery first -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Load SurveyJS libraries -->
     <script src="https://unpkg.com/survey-core/survey.core.min.js"></script>
     <script src="https://unpkg.com/survey-jquery/survey.jquery.min.js"></script>
     <link href="https://unpkg.com/survey-core/defaultV2.min.css" rel="stylesheet">
+
     <style>
+        /* Ensures that the survey container expands fully in mobile view */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
         #surveyContainer {
             width: 100%;
-            height: auto;
+            max-width: 100%;
+            height: 100%;
             margin: 20px 0;
+            box-sizing: border-box;
+            padding: 10px; /* Add some padding for readability */
+        }
+
+        /* Ensure SurveyJS styles are responsive on smaller screens */
+        .sv_main {
+            width: 100% !important;
         }
     </style>
 </head>
@@ -71,16 +92,15 @@
             const surveyData = sender.data;
 
             fetch('https://script.google.com/macros/s/AKfycbyMTulHtwNCEULVxmKgrxjYHE-u8TILTWkACMirpFt9yxdTbxcOC2AhHmc_AGSB-1-x3A/exec', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    mode: 'no-cors',  // Adding 'no-cors' mode
-    body: JSON.stringify(surveyData)
-})
-    .then(() => console.log("Survey data sent successfully"))
-    .catch(error => console.error("Error:", error));
-
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                mode: 'no-cors',  // Adding 'no-cors' mode
+                body: JSON.stringify(surveyData)
+            })
+            .then(() => console.log("Survey data sent successfully"))
+            .catch(error => console.error("Error:", error));
         });
 
         // Render the Survey in the HTML container
