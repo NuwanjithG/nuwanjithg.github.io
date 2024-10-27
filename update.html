@@ -41,6 +41,27 @@
     <div id="surveyContainer"></div>
 
     <script>
+        // Define the theme JSON
+        const themeJson = {
+            "themeName": "layered",
+            "colorPalette": "light",
+            "isPanelless": true,
+            "backgroundImage": "",
+            "backgroundOpacity": 0.35,
+            "backgroundImageAttachment": "scroll",
+            "backgroundImageFit": "cover",
+            "cssVariables": {
+                "--sjs-corner-radius": "4px",
+                "--sjs-base-unit": "8px",
+                "--sjs-shadow-small": "0px 0px 0px 1px rgba(0, 0, 0, 0.05),0px 8px 16px 0px rgba(0, 0, 0, 0.1),0px 2px 4px 0px rgba(0, 0, 0, 0.1)",
+                "--sjs-border-default": "rgba(0, 0, 0, 0.16)",
+                "--sjs-general-backcolor": "rgba(255, 255, 255, 1)",
+                "--sjs-primary-backcolor": "rgba(122, 100, 168, 1)",
+                "--sjs-primary-forecolor": "rgba(255, 255, 255, 1)",
+                // Add other CSS variables here as needed...
+            }
+        };
+
         // Define the survey JSON with updated questions
         const surveyJSON = {
             "title": "HRM Training",
@@ -84,8 +105,10 @@
             ]
         };
 
-        // Initialize the Survey
+        // Initialize the Survey with theme
         const survey = new Survey.Model(surveyJSON);
+        survey.theme = themeJson.themeName; // Set the theme
+        Survey.StylesManager.applyTheme(themeJson); // Apply the custom theme
 
         // Event handler on survey completion
         survey.onComplete.add(function (sender) {
