@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurveyJS Dynamic Ranking Survey</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://unpkg.com/survey-core/defaultV2.min.css" type="text/css" rel="stylesheet" />
+    <script src="https://unpkg.com/survey-jquery/survey.jquery.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+    </style>
+</head>
+<body>
+    <!-- Survey Container -->
+    <div id="surveyContainer"></div>
+
+    <script>
+        // Define the survey JSON configuration
+        var surveyJSON = {
+            "logoPosition": "right",
+            "pages": [
+                {
+                    "name": "page1",
+                    "elements": [
+                        {
+                            "type": "dropdown",
+                            "name": "question1",
+                            "title": "I am dedicated to fostering a culture of continuous improvement and accountability. I ensure that employees understand their roles, expectations, and how their contributions align with the organization’s objectives.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        },
+                        {
+                            "type": "dropdown",
+                            "name": "question2",
+                            "title": "I am committed to promoting social sustainability within our organization and the broader community. I believe in creating a positive impact through our actions and empowering our employees to contribute to societal well-being.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        },
+                        {
+                            "type": "dropdown",
+                            "name": "question3",
+                            "title": "I am committed to the continuous growth and development of our employees.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        },
+                        {
+                            "type": "dropdown",
+                            "name": "question4",
+                            "title": "I am dedicated to fostering a highly engaged workforce. I strive to create an inclusive environment where every team member feels valued and motivated to contribute their best.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        },
+                        {
+                            "type": "dropdown",
+                            "name": "question5",
+                            "title": "I am committed to ensuring a safe and healthy work environment for all employees.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        },
+                        {
+                            "type": "dropdown",
+                            "name": "question6",
+                            "title": "I am dedicated to cultivating a positive and inclusive organizational culture. I strive to create an environment where every team member feels valued, respected, and motivated to contribute to our collective success.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        },
+                        {
+                            "type": "dropdown",
+                            "name": "question7",
+                            "title": "I am committed to upholding the highest standards of ethical integrity. I ensure that all employees understand and adhere to our ethical guidelines, fostering a culture of transparency, accountability, and trust.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        },
+                        {
+                            "type": "dropdown",
+                            "name": "question8",
+                            "title": "I prioritize understanding and supporting our team members. My goal is to create a compassionate and inclusive work environment where everyone feels heard and valued.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        },
+                        {
+                            "type": "dropdown",
+                            "name": "question9",
+                            "title": "I am dedicated to maintaining the highest standards of compliance.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        },
+                        {
+                            "type": "dropdown",
+                            "name": "question10",
+                            "title": "I am committed to addressing difficult conversations with professionalism and empathy. My aim is to create a supportive environment where open dialogue is encouraged, and solutions are collaboratively developed.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        },
+                        {
+                            "type": "dropdown",
+                            "name": "question11",
+                            "title": "I prioritize open communication, employee well-being, and fostering a positive work environment.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        },
+                        {
+                            "type": "dropdown",
+                            "name": "question12",
+                            "title": "I am committed to creating a clear and inspiring strategic vision for our Human Resource organization. I ensure that our HR strategies are forward-looking, innovative, and designed to support the long-term success and growth of our workforce.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        },
+                        {
+                            "type": "dropdown",
+                            "name": "question13",
+                            "title": "I am committed to offering competitive compensation and comprehensive benefits to attract and retain top talent.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        },
+                        {
+                            "type": "dropdown",
+                            "name": "question14",
+                            "title": "I am committed to fostering a motivated and engaged workforce. I strive to ensure that every employee feels valued, supported, and inspired to perform at their best.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        },
+                        {
+                            "type": "dropdown",
+                            "name": "question15",
+                            "title": "I am committed to preventing and addressing employee burnout. I actively encourage employees to take breaks, use their vacation time, and seek help when needed.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        },
+                        {
+                            "type": "dropdown",
+                            "name": "question16",
+                            "title": "I am committed to enhancing emotional intelligence within our team. I encourage a culture of self-reflection and provide resources to help employees manage their emotions and understand the emotions of others.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        },
+                        {
+                            "type": "dropdown",
+                            "name": "question17",
+                            "title": "I am committed to fostering a culture of creativity and innovation. I believe that every team member has valuable ideas, and I strive to create an environment where these ideas can flourish.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        },
+                        {
+                            "type": "dropdown",
+                            "name": "question18",
+                            "title": "I am committed to leveraging data analytics to inform our HR strategies. By using data-driven insights, I ensure that our HR decisions are evidence-based and aligned with our organizational goals.",
+                            "isRequired": true,
+                            "choices": Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // Initialize the SurveyJS model with the JSON configuration
+        var survey = new Survey.Model(surveyJSON);
+
+        // Custom JavaScript to dynamically remove selected choices from other dropdowns
+        survey.onValueChanged.add(function (sender) {
+            var selectedRanks = [];
+
+            // Collect all selected values from each question
+            sender.getAllQuestions().forEach((question) => {
+                if (question.value) {
+                    selectedRanks.push(question.value);
+                }
+            });
+
+            // Update choices for each dropdown question
+            sender.getAllQuestions().forEach((question) => {
+                if (!question.value) {
+                    // Set choices to only those ranks that haven't been selected
+                    question.choices = Array.from({ length: 18 }, (_, i) => ({ value: `Item ${i + 1}`, text: `${i + 1}` }))
+                        .filter(choice => !selectedRanks.includes(choice.value));
+                }
+            });
+        });
+
+        // URL of the Google Apps Script Web App
+        const googleScriptURL = 'https://script.google.com/macros/s/AKfycbz9gs0Y4wcuRJEgZ6KYzgm8OFBXSd7DljuJAuOvaHqj6-vYOnxJAtBQnv30QPjzAVnN/exec';
+
+        // Handle survey completion and send data to Google Sheets
+        survey.onComplete.add(function (sender) {
+            const surveyData = sender.data;
+            
+            // Send survey data to Google Apps Script via POST request
+            fetch(googleScriptURL, {
+                method: 'POST',
+                mode: 'no-cors', // Use no-cors for Apps Script if you don’t need response handling
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(surveyData)
+            })
+            .then(() => {
+                alert("Your responses have been submitted successfully!");
+            })
+            .catch(error => {
+                alert("There was an error submitting your responses.");
+                console.error("Error:", error);
+            });
+        });
+
+        // Render the survey in the specified container
+        $("#surveyContainer").Survey({ model: survey });
+    </script>
+</body>
+</html>
